@@ -1,0 +1,520 @@
+/* ============ RESET E CONFIGURAÇÕES GERAIS ============ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* ============ TELAS ============ */
+.tela {
+    display: none;
+    min-height: 100vh;
+    padding: 20px 15px 30px;
+    animation: aparecer 0.3s ease;
+}
+
+.tela.ativa {
+    display: block;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ CONTAINER PRINCIPAL ============ */
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    padding: 25px 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+/* ============ CABEÇALHO ============ */
+.cabecalho {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.cabecalho h1 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cabecalho h1 i {
+    color: #667eea;
+}
+
+.subtitulo {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+}
+
+/* ============ SEÇÕES ============ */
+.secao {
+    margin-bottom: 25px;
+}
+
+.secao h2 {
+    color: #34495e;
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+    padding-left: 10px;
+    border-left: 4px solid #667eea;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ============ DIVISOR ============ */
+.divisor {
+    display: flex;
+    align-items: center;
+    margin: 30px 0;
+    gap: 15px;
+}
+
+.divisor hr {
+    flex: 1;
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #ddd, transparent);
+}
+
+.divisor span {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* ============ CAMPOS DE ENTRADA ============ */
+.campo {
+    margin-bottom: 20px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.campo input {
+    width: 100%;
+    padding: 16px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 16px;
+    background: #f8f9fa;
+    transition: all 0.3s;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.campo input:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* ============ CAMPOS DE SENHA ============ */
+.campo-senha {
+    position: relative;
+}
+
+.campo-senha input {
+    padding-right: 60px;
+}
+
+.botao-olho {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: #7f8c8d;
+    font-size: 1.2rem;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.botao-olho:hover, .botao-olho:active {
+    background: rgba(0,0,0,0.05);
+    color: #667eea;
+}
+
+/* ============ LINHAS DUPLAS ============ */
+.linha-dupla {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.campo.meio {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* ============ BOTÕES ============ */
+.botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.botao-principal, .botao-secundario, .botao-busca, .botao-voltar, .botao-csv {
+    padding: 18px 25px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+}
+
+.botao-principal {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+}
+
+.botao-secundario {
+    background: #f8f9fa;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.botao-busca {
+    background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+    color: white;
+    width: 100%;
+    margin-top: 10px;
+    box-shadow: 0 5px 20px rgba(76, 175, 80, 0.3);
+}
+
+.botao-voltar {
+    background: #f8f9fa;
+    color: #7f8c8d;
+    border: 2px solid #ddd;
+}
+
+.botao-csv {
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+    color: white;
+    box-shadow: 0 5px 20px rgba(33, 150, 243, 0.3);
+}
+
+.botao-principal:active, .botao-busca:active, .botao-csv:active {
+    transform: translateY(2px);
+    box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+}
+
+.botao-secundario:active, .botao-voltar:active {
+    transform: translateY(2px);
+    background: #e9ecef;
+}
+
+/* ============ TABELA ============ */
+.secao-tabela {
+    margin: 25px 0;
+}
+
+.tabela-container {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    background: #f8f9fa;
+}
+
+#tabelaUsuarios {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+#tabelaUsuarios thead {
+    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+    color: white;
+}
+
+#tabelaUsuarios th {
+    padding: 18px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#tabelaUsuarios td {
+    padding: 16px 12px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+    font-size: 0.9rem;
+}
+
+#tabelaUsuarios tbody tr:last-child td {
+    border-bottom: none;
+}
+
+#tabelaUsuarios tbody tr:hover {
+    background-color: #f0f7ff;
+}
+
+/* Garante que textos grandes quebrem linha */
+td {
+  word-break: break-word; /* Quebra palavras grandes */
+  white-space: normal; /* Permite quebra de linha */
+  max-width: 250px; /* Limita o tamanho das colunas */
+}
+
+/* Mantém a tabela dentro da tela */
+table {
+  table-layout: fixed; /* Força cálculo fixo das colunas */
+}
+
+
+/* ============ BOTÕES DA TABELA ============ */
+.botao-tabela {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+}
+
+.botao-editar {
+    background: #4CAF50;
+    color: white;
+}
+
+.botao-apagar {
+    background: #f44336;
+    color: white;
+}
+
+.botao-tabela:active {
+    transform: scale(0.95);
+}
+
+/* Adicione ao seu arquivo CSS */
+.botao-principal.modo-edicao {
+  background: linear-gradient(135deg, #f39c12 0%, #d35400 100%) !important;
+  box-shadow: 0 5px 20px rgba(243, 156, 18, 0.3) !important;
+}
+
+.botao-principal.modo-edicao:hover {
+  background: linear-gradient(135deg, #e67e22 0%, #c0392b 100%) !important;
+}
+
+/* ============ MENSAGEM VAZIA ============ */
+.mensagem-vazia {
+    text-align: center;
+    padding: 40px 20px;
+    color: #7f8c8d;
+    display: none;
+}
+
+.mensagem-vazia i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #bdc3c7;
+}
+
+.mensagem-vazia p {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.mensagem-vazia small {
+    font-size: 0.9rem;
+}
+
+/* ============ MODAL ============ */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: aparecerModal 0.3s ease;
+}
+
+@keyframes aparecerModal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-conteudo {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.modal-conteudo p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    color: #2c3e50;
+    line-height: 1.5;
+}
+
+.modal-botoes {
+    display: flex;
+    gap: 15px;
+}
+
+.modal-botoes button {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.modal-botoes button:first-child {
+    background: #4CAF50;
+    color: white;
+}
+
+.modal-botoes button:last-child {
+    background: #f8f9fa;
+    color: #f44336;
+    border: 2px solid #f44336;
+}
+
+.modal-botoes button:active {
+    transform: scale(0.98);
+}
+
+/* ============ NOTIFICAÇÃO ============ */
+.notificacao {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #4CAF50;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    display: none;
+    align-items: center;
+    gap: 12px;
+    z-index: 999;
+    animation: aparecerNotificacao 0.3s ease;
+}
+
+@keyframes aparecerNotificacao {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.notificacao i {
+    font-size: 1.2rem;
+}
+
+/* ============ RESPONSIVIDADE ============ */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 15px;
+        border-radius: 15px;
+    }
+    
+    .cabecalho h1 {
+        font-size: 1.6rem;
+    }
+    
+    .secao h2 {
+        font-size: 1.2rem;
+    }
+    
+    .campo input {
+        padding: 14px 16px;
+    }
+    
+    .botao-principal, .botao-secundario, .botao-busca, .botao-voltar, .botao-csv {
+        padding: 16px 20px;
+        font-size: 1rem;
+    }
+    
+    #tabelaUsuarios th,
+    #tabelaUsuarios td {
+        padding: 12px 8px;
+        font-size: 0.85rem;
+    }
+    
+    .botao-tabela {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 350px) {
+    .linha-dupla {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .botoes {
+        gap: 12px;
+    }
+}

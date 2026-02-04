@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CRUD Cadastro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Tela 1: Cadastro -->
+    <div id="telaCadastro" class="tela ativa">
+        <div class="container">
+            <!-- Cabeçalho -->
+            <div class="cabecalho">
+                <h1><i class="fas fa-users"></i> CRUD CADASTRO</h1>
+                <p class="subtitulo">Preencha as Informações Pedidas a Baixo</p>
+            </div>
+
+            <!-- Informações Pessoais -->
+            <div class="secao">
+                <h2><i class="fas fa-id-card"></i> Informações Pessoais</h2>
+                
+                <div class="campo">
+                    <label><i class="fas fa-user"></i> Nome Completo</label>
+                    <input type="text" id="nome" placeholder="Seu Nome Completo">
+                </div>
+                
+                <div class="campo">
+                    <label><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="email" placeholder="Adicione o Seu E-mail">
+                </div>
+                
+                <div class="campo">
+                    <label><i class="fas fa-lock"></i> Senha</label>
+                    <div class="campo-senha">
+                        <input type="password" id="senha" placeholder="Crie Uma Senha">
+                        <button type="button" class="botao-olho" onclick="mostrarSenha('senha')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="campo">
+                    <label><i class="fas fa-lock"></i> Repete Senha</label>
+                    <div class="campo-senha">
+                        <input type="password" id="repetesenha" placeholder="Confirme a Sua Senha">
+                        <button type="button" class="botao-olho" onclick="mostrarSenha('repetesenha')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Divisor -->
+            <div class="divisor">
+                <hr>
+                <span>Endereço</span>
+                <hr>
+            </div>
+
+            <!-- Endereço -->
+            <div class="secao">
+                <div class="campo">
+                    <label><i class="fas fa-map-pin"></i> CEP</label>
+                    <input type="text" id="cep" placeholder="00000-000" onblur="buscarCEP(this.value)">
+                </div>
+                
+                <div class="campo">
+                    <label> Bairro</label>
+                    <input type="text" id="bairro" placeholder="Seu Bairro">
+                </div>
+                
+                <div class="linha-dupla">
+                    <div class="campo meio">
+                        <label>Cidade</label>
+                        <input type="text" id="cidade" placeholder="Cidade">
+                    </div>
+                    <div class="campo meio">
+                        <label>Estado</label>
+                        <input type="text" id="uf" placeholder="UF" maxlength="2">
+                    </div>
+                </div>
+                
+                <div class="campo">
+                    <label> Rua/Avenida</label>
+                    <input type="text" id="rua" placeholder="Nome Da Rua">
+                </div>
+                
+                <div class="campo">
+                    <label>Número</label>
+                    <input type="number" id="numero" placeholder="N">
+                </div>
+                
+                <div class="campo">
+                    <label>Complemento</label>
+                    <input type="text" id="complemento" placeholder="Apartamento, Casa ....">
+                </div>
+                
+                <div class="campo">
+                    <label></i> Código Do IBGE</label>
+                    <input type="text" id="ibge" placeholder="Código Da Cidade">
+                </div>
+            </div>
+
+            <!-- Botões -->
+            <div class="botoes">
+                <button class="botao-principal" onclick="adicionarOuAtualizarUsuario()">
+                    <i class="fas fa-user-plus"></i> Adicionar Usuário
+                </button>
+                <button class="botao-secundario" onclick="irParaProcurar()">
+                    <i class="fas fa-arrow-right"></i> Próximo
+                </button>
+            </div>
+            
+            <!-- ID oculto para edição -->
+            <input type="hidden" id="usuarioId">
+        </div>
+    </div>
+
+    <!-- Tela 2: Procurar -->
+    <div id="telaProcurar" class="tela">
+        <div class="container">
+            <!-- Cabeçalho -->
+            <div class="cabecalho">
+                <h1><i class="fas fa-search"></i> PROCURAR CONTA</h1>
+                <p class="subtitulo">Preencha as Informações Pedidas a Baixo</p>
+            </div>
+
+            <!-- Divisor -->
+            <div class="divisor">
+                <hr>
+                <span>Busca</span>
+                <hr>
+            </div>
+
+            <!-- Campo de busca -->
+            <div class="secao">
+                <div class="campo">
+                    <label>Nome Procurado:</label>
+                    <input type="text" id="nomeProcurado" placeholder="Digite o Nome ou Parte Dele">
+                </div>
+                
+                <button class="botao-busca" onclick="procurarUsuarios()">
+                    <i class="fas fa-search"></i> Procurar
+                </button>
+            </div>
+
+            <!-- Tabela de resultados -->
+            <div class="secao-tabela">
+                <div class="tabela-container">
+                    <table id="tabelaUsuarios">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>NOME</th>
+                                <th>EMAIL</th>
+                                <th>SENHA</th>
+                                <th>AONDE MORA</th>
+                                <th>OQUE DESEJA</th>
+                            </tr>
+                        </thead>
+                        <tbody id="corpoTabela">
+                            <!-- Dados serão inseridos aqui -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Mensagem quando não há dados -->
+                <div id="mensagemVazia" class="mensagem-vazia">
+                    <i class="fas fa-users-slash"></i>
+                    <p>Nenhum usuário encontrado</p>
+                    <small>Cadastre usuários na tela anterior</small>
+                </div>
+            </div>
+
+            <!-- Botões -->
+            <div class="botoes">
+                <button class="botao-voltar" onclick="voltarParaCadastro()">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+                <button class="botao-csv" onclick="baixarPlanilha()">
+                    <i class="fas fa-download"></i> Baixar Planilha
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmação -->
+    <div id="modalConfirmacao" class="modal">
+        <div class="modal-conteudo">
+            <p id="mensagemModal"></p>
+            <div class="modal-botoes">
+                <button onclick="confirmarAcao(true)">Sim</button>
+                <button onclick="confirmarAcao(false)">Não</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notificação -->
+    <div id="notificacao" class="notificacao">
+        <span id="textoNotificacao"></span>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/Busca-Cep.js"></script>
+    <script src="js/sistema-csv.js"></script>
+</body>
+</html>

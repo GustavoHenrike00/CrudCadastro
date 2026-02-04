@@ -1,0 +1,220 @@
+# 📋 CRUD de Usuários – Projeto Completo
+
+Este projeto é uma aplicação **CRUD (Create, Read, Update, Delete)** desenvolvida em **HTML, CSS e JavaScript puro**, com persistência de dados via **localStorage** e integração com a **API ViaCEP** para preenchimento automático de endereço.
+
+O objetivo do projeto é **didático e prático**, simulando o funcionamento de um sistema real de cadastro de usuários, com foco em boas práticas, organização e experiência do usuário.
+
+---
+
+## 🧠 Conceitos Utilizados
+
+* CRUD (Create, Read, Update, Delete)
+* Manipulação do DOM
+* localStorage
+* Eventos JavaScript
+* Validação de formulários
+* Consumo de API externa (ViaCEP)
+* Organização por blocos e responsabilidades
+* UX básica (feedback visual, notificações, confirmação de ações)
+
+---
+
+## 🗂️ Estrutura do Projeto
+
+```
+📁 projeto-crud
+│
+├── 📁 css
+│   └── style.css          # Estilização da aplicação
+│
+├── 📁 js
+│   ├── script.js          # Lógica principal do CRUD
+│   └── Busca-Cep.js       # Integração com a API ViaCEP
+│
+├── index.html             # Estrutura HTML
+└── README.md              # Documentação do projeto
+```
+
+---
+
+## 🧱 Estrutura do HTML (Visão Geral)
+
+O HTML é dividido em **blocos bem definidos**, cada um com uma responsabilidade clara:
+
+### 1️⃣ Tela de Cadastro
+
+* Campos de nome, email e senha
+* Confirmação de senha
+* Endereço completo
+* Botão principal para **Adicionar / Atualizar usuário**
+
+### 2️⃣ Tela de Busca
+
+* Campo para procurar usuários por nome ou email
+* Botão de busca
+
+### 3️⃣ Tabela de Usuários
+
+* Exibição dos usuários cadastrados
+* Botões de **Editar** e **Excluir**
+
+### 4️⃣ Modal de Confirmação
+
+* Usado antes de excluir um usuário
+
+### 5️⃣ Notificações
+
+* Feedback visual para sucesso, erro ou aviso
+
+---
+
+## 🎨 CSS – Organização e Correções
+
+O CSS foi estruturado para:
+
+* Criar hierarquia visual clara
+* Evitar quebra de layout em textos grandes
+* Melhorar usabilidade dos botões
+* Tornar a tabela legível
+* Preparar o sistema para crescimento
+
+### Correções importantes aplicadas:
+
+* Quebra automática de texto na tabela
+* Largura controlada das colunas
+* `table-layout: fixed`
+* Feedback visual em botões
+* Separação clara entre seções
+
+---
+
+## ⚙️ JavaScript – Funcionamento Completo
+
+O JavaScript é o coração do sistema e foi dividido logicamente em blocos.
+
+---
+
+### 🔹 1. Inicialização e Persistência
+
+* Os dados são carregados do `localStorage` ao iniciar a aplicação
+* O sistema **não perde dados ao pressionar F5**
+* IDs são gerados automaticamente sem repetição
+
+```js
+let usuarios = JSON.parse(localStorage.getItem('crudUsuarios')) || [];
+```
+
+---
+
+### 🔹 2. Create – Criar Usuário
+
+* Coleta os dados do formulário
+* Valida campos obrigatórios
+* Verifica se as senhas coincidem
+* Monta o endereço completo
+* Salva no array `usuarios`
+* Persiste no `localStorage`
+
+---
+
+### 🔹 3. Read – Listar e Buscar Usuários
+
+* Exibe todos os usuários na tabela
+* Permite busca por nome ou email
+* Atualiza a tabela dinamicamente
+
+---
+
+### 🔹 4. Update – Editar Usuário
+
+Fluxo completo de edição:
+
+1. Clique no botão **Editar** na tabela
+2. Sistema retorna para a tela de cadastro
+3. Todos os campos são preenchidos automaticamente
+4. Usuário pode alterar qualquer informação
+5. Ao salvar, o registro é atualizado
+
+O sistema **não cria um novo usuário**, apenas atualiza o existente.
+
+---
+
+### 🔹 5. Delete – Excluir Usuário
+
+* Clique em **Excluir** abre um modal de confirmação
+* Apenas após confirmação o usuário é removido
+* Exclusão é definitiva
+* Dados são removidos do `localStorage`
+
+---
+
+## 📦 Integração com ViaCEP
+
+O sistema utiliza a API pública **ViaCEP** para preenchimento automático de endereço.
+
+### Funcionamento:
+
+1. Usuário digita o CEP
+2. Ao sair do campo, a API é consultada
+3. Rua, bairro, cidade, UF e IBGE são preenchidos automaticamente
+4. Tratamento de erros para CEP inválido ou inexistente
+
+---
+
+## 📊 Exportação para CSV
+
+* O sistema permite exportar todos os usuários para um arquivo `.csv`
+* Inclui dados básicos, endereço completo e data de cadastro
+* Ideal para planilhas ou relatórios
+
+---
+
+## 🔔 Notificações e UX
+
+O sistema possui notificações visuais para:
+
+* Sucesso
+* Erro
+* Aviso
+
+Além disso:
+
+* Confirmação antes de excluir
+* Feedback visual no botão de edição
+* Scroll automático para melhor experiência
+
+---
+
+## ✅ Funcionalidades Garantidas
+
+✔ Usuários não somem ao atualizar a página
+✔ IDs únicos e consistentes
+✔ CRUD completo funcional
+✔ Endereço automático por CEP
+✔ Edição real de dados
+✔ Exclusão segura
+✔ Código organizado e escalável
+
+---
+
+## 🚀 Possíveis Melhorias Futuras
+
+* Criptografia de senha
+* Paginação da tabela
+* Validações mais avançadas
+* Backend real (Node.js / API REST)
+* Autenticação de usuários
+* Interface responsiva avançada
+
+---
+
+## 👨‍💻 Conclusão
+
+Este projeto representa um **CRUD completo**, bem estruturado e com comportamento semelhante a sistemas reais, sendo ideal para:
+
+* Estudo
+* Portfólio
+* Base para projetos maiores
+* Demonstração de conhecimento em JavaScript
+
+Se você chegou até aqui, parabéns — isso já é **nível desenvolvedor de verdade** 💪🚀
